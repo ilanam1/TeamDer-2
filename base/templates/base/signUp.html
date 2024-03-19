@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+
+    <title>טופס הרשמה</title>
+
+
+     <style>
+        body {
+            background-color: lightgrey;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-size: 20px;
+            color: black;
+        }
+        select, input[type="text"], input[type="email"], input[type="date"] {
+            font-size: 18px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button[type="submit"] {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+           .login-btn
+        {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       .login-btn:hover
+        {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h2>טופס הרשמה</h2>
+
+<form action="/register/" method="post">
+
+    {% csrf_token %}
+
+    <label for="first_name">שם פרטי:</label><br>
+    <input type="text" id="first_name" name="first_name" required><br><br>
+
+    <label for="last_name">שם משפחה:</label><br>
+    <input type="text" id="last_name" name="last_name" required><br><br>
+
+      <label for="gender">מגדר:</label><br>
+    <select id="gender" name="gender" required>
+        <option value="male">זכר</option>
+        <option value="female">נקבה</option>
+        <option value="other">אחר</option>
+    </select><br><br>
+
+
+      <label for="degree">מסלול לימודים:</label><br>
+    <select id="degree" name="degree" required>
+        <option value="software">הנדסת תוכנה</option>
+        <option value="structural">הנדסת בניין</option>
+        <option value="mechanical">הנדסת מכונות</option>
+        <option value="computer science">מדעי המחשב</option>
+        <option value="chemical">הנדסה כימית</option>
+    </select><br><br>
+
+    <label for="birth_date">תאריך לידה:</label><br>
+    <input type="date" id="birth_date" name="birth_date" required><br><br>
+
+    <label for="email">דוא"ל:</label><br>
+
+    <input type="email" id="email" name="email" required pattern=".*@ac\.sce\.ac\.il$" title="דואר אלקטרוני חייב להסתיים ב @ac.sce.ac.il"><br>
+
+    <label for="password">סיסמה חדשה:</label><br>
+    <input type="password" id="password" name="password" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()-_=+])[A-Za-z\d!@#$%^&*()-_=+]{8,}" title="Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character: !,@,#,$,%,^,&,*,),(,-,_,+,"><br>
+
+    <p>הסיסמה חייבת להיות באורך 8 תווים לפחות, כך שלפחות אות קטנה אחת ואות גדולה אחת. בנוסף יופיע תו מיוחד כגון:</p>
+
+    <label for="passwordAgain"> אימות סיסמה:</label><br>
+    <input type="password" id="passwordAgain" name="passwordAgain"><br><br>
+
+    <button type="submit">הירשם</button>
+</form>
+  <div class="buttons">
+            <a href="/login" class="login-btn">להתחברות לחץ כאן</a>
+
+  </div>
+
+
+</body>
+</html>
