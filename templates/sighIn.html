@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>מסך התחברות</title>
+
+      <style>
+        body {
+            background-color: lightgrey;
+            text-align:right;
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            font-size: 20px;
+            color: black;
+        }
+        select, input[type="text"], input[type="email"], input[type="date"] {
+            font-size: 18px;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        button[type="submit"] {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+          .signup-btn
+        {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-btn:hover
+        {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2> מסך התחברות</h2>
+
+    <form action="/login" method="post">
+    <label for="email">דוא"ל:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="password">סיסמה:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+
+    <button type="submit">התחבר</button>
+
+    </form>
+  <div class="buttons">
+            <a href="/register" class="signup-btn">להרשמה לחץ כאן</a>
+
+        </div>
+
+</body>
+</html>
