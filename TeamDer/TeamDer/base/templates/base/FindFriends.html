@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamDer</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+       .swiper-container {
+            margin-bottom: 40px; /* Add bottom margin to container for extra space */
+        }
+
+       .swiper-slide {
+            adding-bottom: 50px; /* Increase padding at the bottom of each slide */
+        }
+
+        /* Style for all pagination dots */
+        .swiper-pagination-bullet {
+            background-color: rgba(0, 0, 0, 0.2); /* Default state: lighter purple or your choice */
+            opacity: 1; /* Make non-active dots fully visible */
+           }
+
+        /* Style for the active pagination dot */
+        .swiper-pagination-bullet-active {
+            background-color: #5d3f92; /* Active state: darker purple */
+        }
+
+
+
+        .swiper-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around; /* Adjusted for spacing */
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .swiper-slide img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #5d3f92;
+        }
+
+        .friend-request-btn {
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: none;
+            background-color: #5d3f92;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .friend-request-btn:hover {
+            background-color: #4a148c;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .action-buttons button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid #5d3f92;
+            background-color: transparent;
+            color: #5d3f92;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-buttons button:hover {
+            background-color: #5d3f92;
+            color: #ffffff;
+        }
+           .swiper-navigation {
+        position: absolute;
+        top: 50%; /* Keep the navigation at the vertical center */
+        left: 0;
+        right: 0;
+        margin: auto; /* Centers the navigation */
+        width: 80%; /* Adjust this value to control how close the buttons are to the center */
+        display: flex;
+        justify-content: space-between; /* Spread the buttons apart */
+        align-items: center; /* Center the buttons vertically */
+    }
+        .swiper-button-next, .swiper-button-prev {
+            padding: 15px; /* Adjust the padding to control the size */
+            width: 45px; /* Set width to ensure the button is round */
+            height: 45px; /* Set height to ensure the button is round */
+            font-size: 16px; /* Adjust text size as desired */
+            line-height: 1; /* Adjust line height to help vertically center the text */
+            border-radius: 50%; /* This will make the button completely round */
+            border: none; /* Remove any border */
+            background-color: #dcb5ff; /* Light purple background */
+            color: #5d3f92; /* Text color for visibility */
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+            display: flex; /* Use flexbox to center the content */
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            text-align: center; /* Ensure text is centered for browsers that don't support flexbox alignment */
+         }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+             background-color: #c29bff; /* A slightly darker purple on hover for interactive feedback */
+             color: #ffffff; /* White text color on hover */
+         }
+
+        /* Removing default Swiper navigation icons if any */
+        .swiper-button-next::after, .swiper-button-prev::after {
+              content: none !important; /* Ensures no arrow icons are shown */
+         }
+
+        form {
+            margin: 2px;
+            padding: 1px;
+            border: 2px solid #5d3f92;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            width: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form label {
+            margin: px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        form select {
+            margin: px;
+            padding: 1px;
+            border-radius: 20px;
+            border: 2px solid #5d3f92;
+            background-color: #fff;
+            cursor: pointer;
+            text-align: center;
+            direction: rtl;
+        }
+
+        form button {
+            padding: 1px 20px;
+            border-radius: 20px;
+            border: none;
+            background-color: #5d3f92;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1px;
+        }
+
+        form button:hover {
+            background-color: #4a148c;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<h2>TeamDer</h2>
+<h3>סטודנט קונקט - בואו למצוא חברים חדשים!</h3>
+<h5>להלן אפשרויות סינון:</h5>
+<form action="{% url 'users_slider' %}" method="get">
+    <label for="age">גיל:</label>
+    <select name="age" id="age">
+        <option value="18-25">18-25</option>
+        <option value="25-30">25-30</option>
+        <option value="30-120">30-120</option>
+    </select>
+
+    <label for="degree">התמחות:</label>
+    <select name="degree" id="degree">
+        <option value="software">הנדסת תוכנה</option>
+        <option value="structural">הנדסת בניין</option>
+        <option value="mechanical">הנדסת מכונות</option>
+        <option value="computer science">מדעי המחשב</option>
+        <option value="chemical">הנדסה כימית</option>
+    </select>
+
+    <button type="submit">סנן</button>
+</form>
+
+<div class="swiper-container">
+    <!-- Add Navigation Buttons -->
+    <div class="swiper-navigation">
+        <button class="swiper-button-prev">הבא</button>
+        <button class="swiper-button-next">קודם</button>
+    </div>
+
+    <div class="swiper-wrapper">
+        {% for user in users %}
+            <div class="swiper-slide">
+                <!-- Use a placeholder or a conditional statement for the image -->
+                <img src="https://placeimg.com/150/150/people/{{ forloop.counter }}" alt="Profile Picture">
+                <div>שם: {{ user.first_name }} {{ user.last_name }}</div>
+                <div>גיל: {{ user.age }}</div>
+                <div>התמחות: {{ user.degree }}</div>
+                <!-- Add other details here -->
+                <button class="friend-request-btn">שליחת בקשת חברות</button>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Swiper Pagination -->
+    <div class="swiper-pagination"></div>
+</div>
+
+
+<div class="action-buttons">
+    <button onclick="history.back()">חזרה למסך הבית</button>
+    <button onclick="location.href='#'">התנתקות</button>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    navigation: { // Add this for navigation
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+</script>
+
+</body>
+</html>
+
