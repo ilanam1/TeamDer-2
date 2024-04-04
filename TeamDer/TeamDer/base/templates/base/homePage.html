@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+      <style>
+        body
+        {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background:grey;
+        }
+        .container
+        {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header
+        {
+            font-size: 3.0em;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        .signup-btn, .login-btn
+        {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .signup-btn:hover, .login-btn:hover
+        {
+            background-color: #0056b3;
+        }
+
+
+          .buttons-container
+          {
+             position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+          .onUs {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+        <div class="header">
+            <h1>TeamDer </h1>
+        </div>
+    <div class="onUs">
+        <p>
+            ברוכים הבאים לאתר שבו תוכלו להכיר סטודנטים וליצור קשרים חדשים
+            <br>
+            באתר שלנו תוכלו ליצור קבוצות למידה על פי קורס מסויים ומספר אנשים בקבוצה ועל הדרך להכיר חברים חדשים שילוו אתכם במהלך התואר
+
+        </p>
+    </div>
+        <div class="buttons-container">
+
+            <a href="/register" class="signup-btn">הרשמה</a>
+            <a href="/login" class="login-btn">התחברות</a>
+        </div>
+</div>
+
+</body>
+</html>
