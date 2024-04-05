@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>מחיקת משתמש</title>
+    <script>
+        function confirmDelete() {
+            var result = confirm("אתה בטוח שאתה רוצה למחוק משתמש זה?");
+            if (result) {
+                // User clicked "OK", continue with deletion
+                // Here you can add an AJAX call to the server to actually delete the user
+                alert("המשתמש נמחק בהצלחה!"); // For demonstration purposes
+            }
+        }
+
+        function cancelDelete() {
+            alert("User will not be deleted.");
+            // כאן תוכל להוסיף קוד נוסף לביטול מחיקת המשתמש
+        }
+    </script>
+</head>
+<body>
+    <h1>מחיקת משתמש</h1>
+    <button onclick="confirmDelete()">מחיקת משתמש</button>
+</body>
+</html>
