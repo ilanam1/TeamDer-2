@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>שאלון אישי</title>
+</head>
+<body dir="rtl">
+    <h1>שאלון אישי</h1>
+    <form id="questionnaireForm" action="{% url 'submit_questionnaire' %}" method="post">
+        <p>האם teamDer עזר לך להרגיש טוב יותר חברתית?</p>
+        <label for="social-feelings">1 - לא עזר בכלל</label>
+        <input type="radio" id="social-feelings" name="social-feelings" value="1">
+
+        <label for="social-feelings">2 - עזר מעט</label>
+        <input type="radio" id="social-feelings" name="social-feelings" value="2">
+
+        <label for="social-feelings">3 - עזר במידה מסוימת</label>
+        <input type="radio" id="social-feelings" name="social-feelings" value="3">
+
+        <label for="social-feelings">4 - עזר מאוד</label>
+        <input type="radio" id="social-feelings" name="social-feelings" value="5">
+
+        <p>האם teamDer עזר לך להתקדם בלימודים?</p>
+        <label for="academic-progress">1 - לא עזר בכלל</label>
+        <input type="radio" id="academic-progress" name="academic-progress" value="1">
+
+        <label for="academic-progress">2 - עזר מעט</label>
+        <input type="radio" id="academic-progress" name="academic-progress" value="2">
+
+        <label for="academic-progress">3 - עזר במידה מסוימת</label>
+        <input type="radio" id="academic-progress" name="academic-progress" value="3">
+
+        <label for="academic-progress">4 - עזר מאוד</label>
+        <input type="radio" id="academic-progress" name="academic-progress" value="5">
+
+        <br><br>
+        {% csrf_token %}
+        <input type="submit" value="שלח">
+    </form>
+
+    <a href="{% url 'userHomePage' %}" class="home-link">חזור למסך הבית</a>
+
+    <script>
+        // כאשר הטופס נשלח, העבר את הדף לעמוד הבית
+        document.getElementById("questionnaireForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // מניעת השליחה האוטומטית של הטופס
+
+            // בצע העברה לעמוד הבית
+            window.location.href = "{% url 'userHomePage' %}";
+        });
+    </script>
+</body>
+</html>
