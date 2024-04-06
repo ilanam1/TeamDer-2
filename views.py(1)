@@ -1,0 +1,35 @@
+def questionnariePage(request):
+
+    context = {}
+    return render(request, 'base/questionnarie.html', context)
+
+def submit_questionnaire(request):
+    if request.method == 'POST':
+        user = request.user
+        social_feelings = request.POST.get('social-feelings')
+        academic_progress = request.POST.get('academic-progress')
+
+        # שמירת הנתונים במקרה של משתמש מחובר
+        questionnaire = Questionnaire(user=user, social_feelings=social_feelings, academic_progress=academic_progress)
+        questionnaire.save()
+
+        # אחרי שמירת הנתונים, החזרת קישור לדף הבית של המשתמש
+        return redirect('/userHomePage')
+    else:
+        return HttpResponse('Method Not Allowed', status=405)
+
+
+
+def confirm_delete(request):
+    if request.method == 'GET':
+        return render(request, 'base/confirm_delete.html')  # יש ליצור קובץ HTML עם אישור המחיקה
+
+    elif request.method == 'POST':
+        # מחיקת המשתמש מבסיס הנתונים
+        user_email = request.session.get('user_email')
+        try:
+            user = custumeUser.objects.get(email=user_email)
+            user.delete()
+            return redirect('/Home/')  # אחרי מחיקה מוציא את המשתמש לדף הבית
+        except custumeUser.DoesNotExist:
+            return HttpResponse('משתמש לא נמצא')
