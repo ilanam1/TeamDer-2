@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אישור מחיקת משתמש</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+        button, a {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+        a {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            margin-left: 10px;
+        }
+        button:hover, a:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <h2>האם אתה בטוח שברצונך למחוק את המשתמש?</h2>
+    <form action="/confirm_delete/" method="post">
+        {% csrf_token %}
+        <button type="submit">כן, מחק משתמש</button>
+        <a href="/userHomePage/">ביטול</a>
+    </form>
+</body>
+</html>                                                                                                                                                                                             זה העמוד html של אישור מחיקת משתמש
