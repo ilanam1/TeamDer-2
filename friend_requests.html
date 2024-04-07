@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Friend Requests</title>
+
+
+
+    <style>
+
+          body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #90EE90,#E6E6FA); /* Gradient from light purple to light green */
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+         .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 400px;
+            width: 100%;
+        }
+
+        .action-buttons button {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid #5d3f92;
+            background-color: transparent;
+            color: #5d3f92;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-buttons button:hover {
+            background-color: #5d3f92;
+            color: #ffffff;
+        }
+
+           input[type="submit"] {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid #5d3f92; /* Darker purple for contrast */
+            background-color: transparent;
+            color: #5d3f92;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5d3f92;
+            color: #ffffff;
+        }
+    </style>
+
+</head>
+
+<body>
+<h1>Friends</h1>
+
+<h2>בקשות חברות</h2>
+ {% if requests %}
+     {% for request in requests %}
+       <div>Request from {{request.friend}}
+         <form action="/accept_request/" method="POST">
+             {% csrf_token %}
+             <input type="email" id="email" name="email" style="display: none" value='{{ request.friend|safe }}'>
+             <input type="submit" value="Accept request">
+         </form>
+           <form action="/reject_request/" method="POST">
+             {% csrf_token %}
+             <input type="email" id="email1" name="email1" style="display: none" value='{{ request.friend|safe }}'>
+             <input type="submit" value="Reject request">
+           </form>
+       </div>
+        {% endfor %}
+    {% else %}
+          <div>No pending friend requests</div>
+    {% endif %}
+
+
+
+
+<h2>My Friends</h2>
+    {% for friend in my_friends %}
+        <div>{{friend.first_name}} {{friend.last_name}}</div>
+        <a href="mailto:{{friend.email}}">Send email</a>
+    {% endfor %}
+<div class="action-buttons">
+
+    <h2><a href="/Home" class="home-link">התנתקות</a></h2>
+    <h2><a href="/userHomePage" class="home-link">חזרה למסך הבית</a></h2>
+</div>
+</body>
+</html>
