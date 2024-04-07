@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בחירת קורס</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+  }
+  .container {
+    text-align: center;
+    margin-top: 50px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .course {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  .course h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .course label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .course label:hover {
+    background-color: #e0e0e0;
+  }
+  .course input[type="radio"] {
+    display: none;
+  }
+  .course input[type="radio"]:checked + label {
+    background-color: #4CAF50;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+<form id="courseForm" action="http://127.0.0.1:5000/" method="post">
+   {% csrf_token %}
+<div class="container">
+  <div class="title">בחירת קורס</div>
+  <div class="options">
+    <div class="course">
+      <h2>הנדסת תוכנה</h2>
+      <input type="radio" name="course" id="computerScience">
+      <label for="computerScience">מדעי המחשב</label>
+      <input type="radio" name="course" id="logic">
+      <label for="logic">לוגיקה</label>
+    </div>
+    <div class="course">
+      <h2>הנדסת מכונות</h2>
+      <input type="radio" name="course" id="physics1">
+      <label for="physics1">פיזיקה1</label>
+      <input type="radio" name="course" id="physics2">
+      <label for="physics2">פיזיקה2</label>
+    </div>
+    <div class="course">
+      <h2>מדעי המחשב</h2>
+      <input type="radio" name="course" id="linearAlgebra2">
+      <label for="linearAlgebra2">אלגברה לינארית2</label>
+      <input type="radio" name="course" id="logic1">
+      <label for="logic1">לוגיקה1</label>
+    </div>
+    <div class="course">
+      <h2>הנדסת בניין</h2>
+      <input type="radio" name="course" id="civilEngineering">
+      <label for="civilEngineering">חדווא</label>
+      <input type="radio" name="course" id="engineeringGraphics1">
+      <label for="engineeringGraphics1">גרפיקה הנדסית 1</label>
+    </div>
+    <div class="course">
+      <h2>הנדסה כימית</h2>
+      <input type="radio" name="course" id="generalChemistry1">
+      <label for="generalChemistry1">כימה כללית1</label>
+      <input type="radio" name="course" id="analyticalChemistry2">
+      <label for="analyticalChemistry2">כימה אנליטית2</label>
+    </div>
+  </div>
+  <div class="title">בחירת מספר חברי הקבוצה</div>
+  <div class="numbers">
+    <input type="radio" name="groupSize" id="2">
+    <label for="2">2</label>
+    <input type="radio" name="groupSize" id="3">
+    <label for="3">3</label>
+    <input type="radio" name="groupSize" id="4">
+    <label for="4">4</label>
+    <input type="radio" name="groupSize" id="5">
+    <label for="5">5</label>
+  </div>
+  <a href='/my_view'>
+  <button id="continueButton">המשך</button>
+    </a>
+</div>
+  </form>
+
+
+
+</body>
+</html>

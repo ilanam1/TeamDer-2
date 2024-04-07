@@ -34,7 +34,8 @@
         resize: none;
     }
     input[type="file"] {
-        display: none;
+        display: block;
+        margin-bottom: 10px;
     }
     .upload-btn {
         background-color: #4CAF50;
@@ -44,53 +45,31 @@
         border-radius: 5px;
         cursor: pointer;
     }
-    .userHomePage-btn {
-        background-color: #008CBA;
-        color: white;
-        padding: 5px 20px;
+    .userHomePage-btn, .homePage-btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
         border: none;
         border-radius: 5px;
         cursor: pointer;
     }
-
-    .homePage-btn
-        {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            text-align: center;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .homePage-btn:hover
-        {
-            background-color: #0056b3;
-        }
+    .homePage-btn:hover, .userHomePage-btn:hover {
+        background-color: #0056b3;
+    }
 </style>
 </head>
 <body>
 <div class="container">
-    <h2>הוסף תקציר על עצמך</h2>
-    <div class="form-group">
-        <label for="bio">תקציר:</label>
-        <textarea id="bio" name="bio" rows="5" placeholder="הוסף כאן תקציר על עצמך"></textarea>
-    </div>
-    <div class="form-group">
-        <label for="profile-pic">תמונת פרופיל:</label>
-        <input type="file" id="profile-pic" name="profile-pic">
-        <button class="upload-btn" onclick="document.getElementById('profile-pic').click()">העלאת תמונה</button>
-    </div>
+
     <div class="buttons">
-            <a href="/userHomePage" class="userHomePage-btn">המשך</a>
-            <a href="/Home" class="homePage-btn">למסך הבית לחצו כאן</a>
-
-  </div>
-
+        <p>על מנת לעבור למסך המשתמש שלך תצטרך להתחבר קודם</p>
+        <a href="/Home" class="homePage-btn">למסך הבית לחצו כאן</a>
+    </div>
 </div>
 </body>
 </html>

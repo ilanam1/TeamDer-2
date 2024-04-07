@@ -1,78 +1,102 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>user home page</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-    }
-    .header {
-        background-color: #f2f2f2;
-        padding: 20px;
-        text-align: center;
-    }
-    h1 {
-        font-size: 24px; /* שינוי גודל הכותרת */
-        margin: 0; /* הסרת מרווחים מסביב לכותרת */
-    }
-    .buttons-container {
-        display: flex;
-        justify-content: center; /* מירכוז הכפתורים באמצע */
-        align-items: center; /* מירכוז הכפתורים באמצע */
-        flex-wrap: wrap; /* סידור הכפתורים בשורה אחת */
-        gap: 10px; /* מרווח בין הכפתורים */
-        margin-top: 20px; /* הוספת מרווח בין הכותרת לכפתורים */
-    }
-    .button {
-        background-color: #ccc;
-        border: 2px solid #666;
-        text-align: center;
-        width: 150px; /* רוחב הכפתור */
-        height: 150px; /* גובה הכפתור */
-        line-height: 150px; /* גובה שורה */
-        font-size: 18px;
-        cursor: pointer;
-        overflow: hidden; /* תיקון מלל גולש */
-    }
-    .logout-container {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .logout-button {
-        background-color: #ccc;
-        border: 2px solid #666;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>user home page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .header {
+            background-color: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px; /* שינוי גודל הכותרת */
+            margin: 0; /* הסרת מרווחים מסביב לכותרת */
+        }
+        .buttons-container {
+            display: flex;
+            justify-content: center; /* מירכוז הכפתורים באמצע */
+            align-items: center; /* מירכוז הכפתורים באמצע */
+            flex-wrap: wrap; /* סידור הכפתורים בשורה אחת */
+            gap: 10px; /* מרווח בין הכפתורים */
+            margin-top: 20px; /* הוספת מרווח בין הכותרת לכפתורים */
+        }
+        .button {
+            background-color: #ccc;
+            border: 2px solid #666;
+            text-align: center;
+            width: 150px; /* רוחב הכפתור */
+            height: 150px; /* גובה הכפתור */
+            line-height: 150px; /* גובה שורה */
+            font-size: 18px;
+            cursor: pointer;
+            overflow: hidden; /* תיקון מלל גולש */
+        }
+        .logout-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .logout-button {
+            background-color: #ccc;
+            border: 2px solid #666;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .delete-user-button {
+            background-color: #dc3545;
+            color: white;
+            border: 2px solid #dc3545;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px; /* מרווח מימין */
+        }
+        .delete-user-button:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
 <body dir="rtl">
 <div class="header">
-    <h1>מסך הבית של המשתמש</h1>
+    <h1>האתר של: {{ user.first_name }}</h1>
 </div>
 <div class="buttons-container">
-    <div class="button">קבוצות לימוד</div>
+    <a href='/studyGroupsPage'>
+        <div class="button">קבוצות לימוד</div>
+    </a>
+    <a href='http://127.0.0.1:5000/'>
     <div class="button">פורום שאלות תשובות</div>
-    <div class="button">שאלון רגשות</div>
-
+        </a>
+    <a href='/questionnariePage'>
+        <div class="button">שאלון רגשות</div>
+    </a>
     <a href='/FindFriends'>
-    <div class="button">מציאת חברים חדשים</div>
-</a>
-    <div class="button">הפרופיל שלי</div>
+        <div class="button">מציאת חברים חדשים</div>
+    </a>
+    <a href='/friend_requests'>
+        <div class="button">Friend requests</div>
+    </a>
+    <a href='/profile/'>
+        <div class="button">הפרופיל שלי</div>
+    </a>
     <a href='/dikanatPage'>
-    <div class="button">דיקאנט הסטודנטים</div>
+        <div class="button">דיקאנט הסטודנטים</div>
     </a>
 </div>
 <div class="logout-container">
     <a href='/Home'>
-    <button class="logout-button">התנתק</button>
-        </a>
+        <button class="logout-button">התנתק</button>
+    </a>
+    <a href="/confirm_delete/" onclick="return confirm('האם אתה בטוח שברצונך למחוק את המשתמש?');">
+        <button class="delete-user-button">מחק משתמש</button>
+    </a>
 </div>
 </body>
 </html>

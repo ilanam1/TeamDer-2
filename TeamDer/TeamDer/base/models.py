@@ -39,6 +39,8 @@ class custumeUser(AbstractBaseUser):
     birth_day = models.DateField()
     password = models.CharField(max_length=100)
     last_login = models.DateTimeField(auto_now=True)
+    summary = models.TextField(blank=True, null=True)
+    profile_pic = models.ImageField(upload_to='profile_pics/', default='default_images/default_profile_pic.jpg')
 
     # Add your additional fields here
 
@@ -71,6 +73,22 @@ class loginUser(models.Model):
 
     def __str__(self):
         return self.userName
+
+
+class friends(models.Model):
+    userName = models.EmailField(max_length=100)
+    friend = models.ForeignKey(custumeUser, on_delete=models.CASCADE)
+    status = models.CharField(max_length=100, default="")
+    objects = models.Manager()
+
+
+class Questionnaire(models.Model):
+    user = models.ForeignKey(custumeUser, on_delete=models.CASCADE)
+    social_feelings = models.IntegerField(choices=[(1, 'לא עזר בכלל'), (2, 'עזר מעט'), (3, 'עזר במידה מסוימת'), (4, 'עזר מאוד')])
+    academic_progress = models.IntegerField(choices=[(1, 'לא עזר בכלל'), (2, 'עזר מעט'), (3, 'עזר במידה מסוימת'), (4, 'עזר מאוד')])
+
+
+
 
 
 

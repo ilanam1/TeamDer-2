@@ -15,8 +15,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
+            min-height: 90vh;
             text-align: center;
+            overflow-x: hidden;
+
         }
 
         h1, h2 {
@@ -24,11 +26,12 @@
         }
 
        .swiper-container {
-            margin-bottom: 40px; /* Add bottom margin to container for extra space */
+             flex: 1;
+            margin-right: 20px;
         }
 
        .swiper-slide {
-            adding-bottom: 50px; /* Increase padding at the bottom of each slide */
+            padding-bottom: 50px; /* Increase padding at the bottom of each slide */
         }
 
         /* Style for all pagination dots */
@@ -63,6 +66,7 @@
         }
 
         .friend-request-btn {
+
             padding: 5px 10px;
             border-radius: 20px;
             border: none;
@@ -70,17 +74,19 @@
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
+
+
         }
 
         .friend-request-btn:hover {
             background-color: #4a148c;
         }
 
-        .action-buttons {
+       .action-buttons {
             display: flex;
             justify-content: space-around;
-            margin-top: 20px;
-            width: 100%;
+            margin-top: 1px;
+            width: 50%;
         }
 
         .action-buttons button {
@@ -97,13 +103,14 @@
             background-color: #5d3f92;
             color: #ffffff;
         }
+
            .swiper-navigation {
         position: absolute;
         top: 50%; /* Keep the navigation at the vertical center */
         left: 0;
         right: 0;
         margin: auto; /* Centers the navigation */
-        width: 80%; /* Adjust this value to control how close the buttons are to the center */
+        width: 30%; /* Adjust this value to control how close the buttons are to the center */
         display: flex;
         justify-content: space-between; /* Spread the buttons apart */
         align-items: center; /* Center the buttons vertically */
@@ -181,64 +188,287 @@
             background-color: #4a148c;
         }
 
+        .description-box {
+
+    background-color: #FFFFFF; /* White background for the box */
+    border: 5px solid #DDD; /* Light grey border */
+    padding: 10px; /* Padding inside the box */
+    margin: 4px 0; /* Margin around the box for spacing */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+
+           .user-description {
+            height: 60px; /* Fixed height to fit 3 lines approximately */
+            overflow: hidden; /* Hide overflow text */
+            margin: 10px 0; /* Margin for spacing */
+            text-align: justify; /* Justify text */
+        }
+
+        /* Additional CSS for styling the sections in the right panel */
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+          .right-panel {
+            width: 300px; /* Adjust as needed */
+            background-color: #e0e0e0; /* Light background color */
+            padding: 20px;
+            box-sizing: border-box;
+            height: 600px; /* Adjust as needed */
+            overflow-y: auto; /* Allow scrolling for overflow */
+        }
+
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+          .main-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+        }
+        headers: {
+    "X-CSRFToken": getCookie("csrftoken")
+}
+
+
+     .notification-box {
+    * Light grey background */
+    border: 1px solid #ddd; /* Slightly darker border for contrast */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the box */
+    margin: 20px auto; /* Centering the box and adding margin for spacing */
+    text-align: center; /* Center the text */
+    max-width: 260px; /* Maximum width of the box */
+    line-height: 1.4; /* Line height for readability */
+    font-size: 14px; /* Font size for readability */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle box shadow for depth */
+}
+      .side-panel {
+            position: fixed; /* Fix the panel in place */
+            top: 0; /* Align it to the top */
+            left: 0; /* Align it to the left */
+            width: 300px; /* Set the width */
+            height: 100%; /* Set the height to cover the entire viewport height */
+            background-color: #E6E6FA; /* Light purple background color */
+            padding: 20px; /* Add some padding */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            z-index: 1000; /* Ensure it appears above other content */
+            overflow-y: auto; /* Enable vertical scrolling if content is taller than the viewport */
+        }
+
+        /* Style for the header of the side panel */
+        .panel-header {
+            font-size: 24px; /* Set the font size */
+            font-weight: bold; /* Set the font weight */
+            margin-bottom: 20px; /* Add some margin below the header */
+            color: #333; /* Color for the text */
+        }
+
+        /* Additional styles for links and sections */
+        a {
+            color: #5d3f92; /* Dark purple for links for contrast against the light background */
+            text-decoration: none; /* Optional: removes underline from links */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Optional: adds underline on hover for links */
+        }
+
+        /* Style for sections like friend requests and chats */
+        .section {
+            margin-bottom: 20px; /* Space between sections */
+        }
+
+        .section h2 {
+            color: #333; /* Color for the section headers */
+        }
+        /* Style for the friend requests section */
+        .friend-requests {
+            margin-bottom: 20px; /* Add some margin below the friend requests section */
+        }
+
+        /* Style for the list of approved friends */
+        .approved-friends {
+            /* Add your styling here */
+        }
+
+        /* Style for the chat section */
+        .chat-section {
+            /* Add your styling here */
+        }
+          .swiper-wrapper1 {
+        display: flex; /* מאפשר גמישות בתצוגה */
+        flex-direction: column; /* מסדר את הסליידים בצורה אנכית */
+        align-items: center; /* ממרכז את הסליידים במרכז ה-swiper-container */
+    }
+        .swiper-container1 {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 20%;
+        height: 100%;
+        background-color: #E6E6FA; /* צבע רקע סגול בהיר */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* ממרכז את התוכן באנכי */
+    }
+
+    /* עיצוב הסליידים */
+    .swiper-slide1 {
+        color: #333; /* צבע הטקסט */
+        font-size: 15px; /* גודל הטקסט */
+        padding: 20px; /* רווח בפנים הסלייד */
+        text-align: center; /* ממרכז את הטקסט */
+        display: flex;
+        align-items: center; /* מיישר את התוכן במרכז הסלייד */
+        justify-content: center;
+        height: 90px; /* גובה קבוע לכל סלייד */
+        margin-bottom: 10px; /* מרווח בין סליידים */
+        border: 1px solid #CCC; /* גבול לסליידים */
+        border-radius: 10px; /* פינות מעוגלות */
+        background-color: #FFF; /* רקע לבן לסליידים */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* צל קל */
+    }
+
+        h1 {
+    margin-bottom: 10px; /* מקטין את המרווח בין h1 לאלמנט הבא */
+    padding-top: 30px; /* מוסיף מרווח בחלק העליון של h1 */
+}
+
+h3 {
+    margin-top: 0; /* אם יש צורך, מקטין את המרווח בחלק העליון של h3 */
+}
+
 
     </style>
 </head>
 <body>
 
-<h2>TeamDer</h2>
+
+
+
+<h1>TeamDer</h1>
 <h3>סטודנט קונקט - בואו למצוא חברים חדשים!</h3>
 <h5>להלן אפשרויות סינון:</h5>
-<form action="{% url 'users_slider' %}" method="get">
+<form action="{% url 'users_slider' %}" method="get" class="filter-form">
+    <!-- Age Filter -->
     <label for="age">גיל:</label>
     <select name="age" id="age">
+        <option value="no_filter">ללא סינון</option>
         <option value="18-25">18-25</option>
         <option value="25-30">25-30</option>
         <option value="30-120">30-120</option>
     </select>
 
-    <label for="degree">התמחות:</label>
+    <!-- Degree Filter -->
+    <label for="degree">תואר:</label>
     <select name="degree" id="degree">
+        <option value="no_filter">ללא סינון</option>
         <option value="software">הנדסת תוכנה</option>
-        <option value="structural">הנדסת בניין</option>
-        <option value="mechanical">הנדסת מכונות</option>
+          <option value="structural">הנדסת בניין</option>
+  <option value="mechanical">הנדסת מכונות</option>
         <option value="computer science">מדעי המחשב</option>
         <option value="chemical">הנדסה כימית</option>
+        <!-- Other options -->
     </select>
 
-    <button type="submit">סנן</button>
+    <button type="submit">חפש</button>
 </form>
 
+<div class="swiper-wrapper">
+    {% if users %}
+    {% for user in users %}
+        <!-- User display code -->
+    {% endfor %}
+{% else %}
+    <div class="notification-box">לצערנו אין משתמשים עם הנתונים שהעדפת, אולי ברצונך להיות קצת יותר גמיש בחיפוש שלך? אנחנו בטוחים שהמון אנשים רוצים כבר להיות חברים שלך :)</div>
+{% endif %}
+</div>
+
+
+<div class="swiper-container1" style="position: fixed; top: 0; right: 0; width: 20%; height: 100%;">
+    <div class="swiper-wrapper1">
+        <div class="swiper-slide1">"חברות היא מתנה שאנחנו נותנים לעצמנו."</div>
+        <div class="swiper-slide1">החבר הטוב הוא מי שאתה יכול לשבת לידו בשקט ולהרגיש כאילו זה היה השיחה הטובה ביותר שהייתה לך."</div>
+        <div class="swiper-slide1">חברות אמיתית מגיעה כאשר השקט ביניכם מרגיש נעים.</div>
+        <div class="swiper-slide1">"כל חברות גדולה מתחילה משיחה קטנה."</div>
+        <div class="swiper-slide1">"לא משנה כמה אתה חושב שאתה בודד, תמיד יש מישהו שמחכה למצוא חבר כמוך."</div>
+        <div class="swiper-slide1">"כל חבר התחיל מזר, אז זכור: כל מפגש חדש יכול להפוך לחברות לכל החיים."</div>
+        <div class="swiper-slide1">"בעולם שבו הכל ניתן לשינוי, חברות אמיתית היא מצפן שאף פעם לא משתבש"</div>
+        <div class="swiper-slide1">"לעולם אל תתייאש מלחפש חברים חדשים; הנפש הנכונה בזמן הנכון יכולה לשנות את כל החיים שלך."</div>
+        <div class="swiper-slide1">"חברים הם משפחה שאנחנו בוחרים לעצמנו."</div>
+
+
+        <!-- הוסף כאן עוד סליידים לפי הצורך -->
+    </div>
+    <!-- אם תרצה, תוכל להוסיף כאן ניווט ופגינציה -->
+</div>
+
+
 <div class="swiper-container">
+
     <!-- Add Navigation Buttons -->
     <div class="swiper-navigation">
         <button class="swiper-button-prev">הבא</button>
         <button class="swiper-button-next">קודם</button>
     </div>
 
-    <div class="swiper-wrapper">
-        {% for user in users %}
-            <div class="swiper-slide">
-                <!-- Use a placeholder or a conditional statement for the image -->
-                <img src="https://placeimg.com/150/150/people/{{ forloop.counter }}" alt="Profile Picture">
-                <div>שם: {{ user.first_name }} {{ user.last_name }}</div>
-                <div>גיל: {{ user.age }}</div>
-                <div>התמחות: {{ user.degree }}</div>
-                <!-- Add other details here -->
-                <button class="friend-request-btn">שליחת בקשת חברות</button>
-            </div>
-        {% endfor %}
+    <div class="swiper-wrapper" data-type="{{user_email}}">
+     {% for user in users %}
+<div class="swiper-slide" data-dob="{{ user.birth_day }}"> <!-- Assuming 'dob' is the date of birth in 'YYYY-MM-DD' format -->
+    <img src="https://placeimg.com/150/150/people/{{ forloop.counter }}" alt="Profile Picture">
+    <div>שם: {{ user.first_name }} {{ user.last_name }}</div>
+    <div class="age">גיל: </div> <!-- Placeholder for age -->
+    <div>תואר: {{ user.degree }}</div>
+     <div class="description-box">תקציר קצרצר עלי: {{ user.short_description }}</div>
+    <form action="/send_friend_request/" method="POST">
+        {% csrf_token %}
+        <input type="email" id="email" name="email" style="display: none" value='{{ user.email|safe }}'>
+        <input type="submit" value="שליחת בקשת חברות">
+    </form>
+    <!-- Other details -->
+</div>
+{% endfor %}
     </div>
-
-    <!-- Swiper Pagination -->
-    <div class="swiper-pagination"></div>
 </div>
 
 
 <div class="action-buttons">
-    <button onclick="history.back()">חזרה למסך הבית</button>
-    <button onclick="location.href='#'">התנתקות</button>
+    <a href="/userHomePage" class="home-link">חזרה למסך הבית</a>
+    <a href="/Home" class="home-link">התנתקות</a>
 </div>
+
+
+<div class="side-panel">
+
+
+   <a href='/friend_requests'>
+        <div class="button">בקשות חברות</div>
+    </a>
+
+    <div>
+        <h1>-------</h1>
+    </div>
+
+    <!-- Approved friends section with link -->
+    <div class="approved-friends">
+        <h2><a href="/approved-friends/">חברים מאושרים</a></h2>
+    </div>
+    <div>
+        <h1>-------</h1>
+    </div>
+    <!-- Chat section with link -->
+    <div class="chat-section">
+        <h2><a href="/chats/">צ'אטים</a></h2>
+    </div>
+</div>
+
 
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
@@ -255,6 +485,51 @@
 });
 </script>
 
-</body>
-</html>
 
+<script>
+document.querySelectorAll('.swiper-slide').forEach(function(slide) {
+    var dob = new Date(slide.dataset.dob);
+    var age = new Date().getFullYear() - dob.getFullYear();
+    var m = new Date().getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && new Date().getDate() < dob.getDate())) {
+        age--;
+    }
+    slide.querySelector('.age').textContent += age; // Append age to the 'גיל: ' text
+});
+
+</script>
+
+<script>
+
+
+</script>
+
+
+
+<script>
+    function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+</script>
+</body>
+
+
+<script>
+    var swiper = new Swiper('.swiper-container1', {
+        direction: 'vertical', // מאפשר גלילה אנכית
+        loop: true, // לולאה אינסופית של הסליידים
+    });
+</script>
+</html>

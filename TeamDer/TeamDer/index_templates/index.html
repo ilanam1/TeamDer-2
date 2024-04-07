@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30"> <!-- רענון אוטומטי כל 30 שניות -->
+    <title>Chat App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        h2 {
+            color: #666;
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .message-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .message {
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            padding: 8px;
+            margin: 4px 0;
+        }
+
+        .message strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Chat</h1>
+        <h2>Participants: {% for participant in participants %}{{ participant }}{% if not loop.last %}, {% endif %}{% endfor %}</h2> <!-- שמות המשתתפים -->
+        <ul class="message-list">
+            {% for message in messages %}
+            <li class="message"><strong>{{ message['username'] }}</strong>: {{ message['message'] }}
+                {% if message['file'] %}
+                <br>
+                <a href="{{ url_for('uploaded_file', filename=message['file']) }}" target="_blank">View File</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        <form method="post" enctype="multipart/form-data">
+            <input type="text" name="username" placeholder="Your Name" required><br>
+            <input type="text" name="message" placeholder="Type your message..." required><br>
+            <input type="file" name="file"><br>
+            <button type="submit">Send</button>
+        </form>
+
+
+    </div>
+
+
+</body>
+
+</html>

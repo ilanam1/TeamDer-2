@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>עדכון פרופיל</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+
+
+
+            font-family: 'Arial', sans-serif;
+            font-size: 12px
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #5d3f92;
+            text-align: center;
+        }
+
+        .user-profile, .update-profile-image, .update-summary {
+            background-color:  #e6e6fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: fit-content;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+
+        .user-profile ul, .update-profile-image form, .update-summary form {
+            list-style: none;
+            padding: 0;
+        }
+
+        .user-profile li, .update-profile-image label, .update-summary label {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        form button {
+            background-color: #5d3f92;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #4a148c;
+        }
+
+        label, input[type="file"], textarea {
+            display: block;
+            margin: 10px 0;
+        }
+
+        textarea {
+            width: 500px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .action-buttons a {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid #5d3f92;
+            background-color: transparent;
+            color: #5d3f92;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .action-buttons a:hover {
+            background-color: #5d3f92;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>עדכון פרופיל</h2>
+
+<div class="user-profile">
+    <ul>
+       <form method="POST" action="/update_profile/">
+    {% csrf_token %}
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}">
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}">
+
+    <label for="degree">Degree:</label>
+    <input type="text" id="degree" name="degree" value="{{ user.degree }}">
+
+
+        <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required pattern=".*@ac\.sce\.ac\.il$" value="{{ user.email }}">
+
+    <button type="submit">Update Profile</button>
+</form>
+
+
+
+<div class="update-profile-image">
+
+        <label for="profile_image">עדכן תמונת פרופיל:</label>
+        <input type="file" id="profile_image" name="profile_image">
+        <button type="submit">העלה תמונה</button>
+    </form>
+</div>
+
+<div class="update-summary">
+
+        <label for="summary">עדכן תקציר:</label>
+        <textarea id="summary" name="summary">{{ user.summary }}</textarea>
+        <button type="submit">עדכן תקציר</button>
+    </form>
+</div>
+
+<div class="action-buttons">
+    <a href="/userHomePage" class="home-link">חזרה למסך הבית</a>
+    <a href="/Home" class="home-link">התנתקות</a>
+</div>
+
+
+</body>
+</html>

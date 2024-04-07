@@ -1,85 +1,51 @@
-from django.test import TestCase
-import unittest
-import createUser
-from django.contrib.auth.models import User
+from django.test import TestCase, Client
+from django.urls import reverse
 from .models import custumeUser
-from .createUser import createNewUser
+import unittest
 
-from unittest.mock import MagicMock
+class ViewsTestCase(TestCase):
 
+    def setUp(self):
+        self.client = Client()
+        self.user_data = {
+            'first_name': 'אילן',
+            'last_name': 'אמוייב',
+            'gender': 'זכר',
+            'degree': 'software',
+            'birth_date': '2002-10-23',
+            'email': 'ilan@ac.sce.ac.il',
+            'password': '12345678iA@',
+            'passwordAgain': '12345678iA@',
+            'summary': 'hello'
+        }
 
+    def test_home_view(self):
+        response = self.client.get(reverse('Home'))
+        self.assertEqual(response.status_code, 200)
 
-class UserTests(TestCase):
+    def test_register_view(self):
+        response = self.client.post(reverse('register'), self.user_data)
+        self.assertEqual(response.status_code, 302)  # Redirects after successful registration
 
-    #בדיקת היחידה שאני יצרתי-בודקת האם המשתמש קיים בבסיס הנתונים
-    def test_user_exists(self):
-        user = createNewUser("אילן","אמוייב","זכר","הנדסת תוכנה","2002-10-23","ilanam1@ac.sce.ac.il","213208671iA.")
-        self.assertTrue(custumeUser.objects.filter(email=user.email).exists())
+    def test_login_view(self):
+        response = self.client.post(reverse('login'), self.user_data)
+        self.assertEqual(response.status_code, 302)  # Redirects after successful login
 
-    #שלוש בדיקות היחידה שהבינה המלאכותית יצרה
-    def test_createNewUser_returns_user_with_correct_details(self):
-        # Arrange
-        Fn = "John"
-        Ln = "Doe"
-        g = "Male"
-        d = "BSc"
-        date = "1990-01-01"
-        em = "john.doe@example.com"
-        passW = "password123"
+    def test_dikant_page_view(self):
+        response = self.client.get(reverse('dikanatPage'))
+        self.assertEqual(response.status_code, 200)
 
-        # Act
-        user = createNewUser(Fn, Ln, g, d, date, em, passW)
+    def test_logout_view(self):
+        response = self.client.get(reverse('logout'))
+        self.assertEqual(response.status_code, 302)  # Redirects after logout
 
-        # Assert
-        assert user.first_name == Fn
-        assert user.last_name == Ln
-        assert user.gender == g
-
-
-    def test_createNewUser_calls_User_objects_create(self):
-        # Arrange
-        Fn = "John"
-        Ln = "Doe"
-        g = "Male"
-        d = "BSc"
-        date = "1990-01-01"
-        em = "john.doe@example.com"
-        passW = "password123"
-
-        mock_user_create = MagicMock()
-        custumeUser.objects.create = mock_user_create
-
-        # Act
-        createNewUser(Fn, Ln, g, d, date, em, passW)
-
-        # Assert
-        mock_user_create.assert_called_once_with(
-            first_name=Fn,
-            last_name=Ln,
-            gender=g,
-            degree=d,
-            birth_date=date,
-            email=em,
-            password=passW
-        )
-
-    def test_createNewUser_with_valid_values(self):
-        # Arrange
-        Fn = "John"
-        Ln = "Doe"
-        g = "Male"
-        d = "BSc"
-        date = "1990-01-01"
-        em = "john.doe@example.com"
-        passW = "password123"
-
-        # Act
-        user = createNewUser(Fn, Ln, g, d, date, em, passW)
-
-        # Assert
-        assert user is not None
+    def test_invalid_user_login(self):
+        invalid_user_data = {
+            'email': 'invalid@example.com',
+            'password': 'InvalidPassword123'
+        }
+        response = self.client.post(reverse('login'), invalid_user_data)
+        self.assertContains(response, 'המשתמש אינו קיים במערכת')  # Assert error message
 
 
 
-if __name__=='__main__':
-    unittest.main()
