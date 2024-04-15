@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Messages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .messages-section {
+            margin-bottom: 40px;
+        }
+        .message {
+            background-color: #ffffff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .message-header {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .message-content {
+            margin-bottom: 5px;
+            color: #666;
+        }
+        .message-timestamp {
+            text-align: right;
+            font-size: 0.8em;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <h2>Received Messages</h2>
+    <div class="messages-section">
+        {% for message in received_messages %}
+            <div class="message">
+                <div class="message-header">From: {{ message.from_user.email }}</div>
+                <div class="message-content">{{ message.content }}</div>
+                <div class="message-timestamp">{{ message.timestamp }}</div>
+            </div>
+        {% empty %}
+            <p>No received messages.</p>
+        {% endfor %}
+    </div>
+
+    <h2>Sent Messages</h2>
+    <div class="messages-section">
+        {% for message in sent_messages %}
+            <div class="message">
+                <div class="message-header">To: {{ message.to_user.email }}</div>
+                <div class="message-content">{{ message.content }}</div>
+                <div class="message-timestamp">{{ message.timestamp }}</div>
+            </div>
+        {% empty %}
+            <p>No sent messages.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
